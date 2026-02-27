@@ -1,35 +1,23 @@
-# Vector Memory Layer
+# ⚠️ Archived — Superseded by agent-memory-core
 
-This directory contains the persistent vector memory system for the agent.
+This repository was an early prototype of the persistent vector memory system.
 
-## Components
+**It has been superseded by [agent-memory-core](https://github.com/JakebotLabs/agent-memory-core)**, which provides a production-ready, properly packaged implementation with:
 
-- **`indexer.py`**: Reads `../MEMORY.md`, chunks it by header, embeds it using `all-MiniLM-L6-v2`, and stores it in a local ChromaDB.
-- **`search.py`**: Command-line tool to semantically search the memory.
-- **`chroma_db/`**: The persistent SQLite-based vector database (created after running indexer).
-- **`venv/`**: Dedicated virtual environment to avoid dependency conflicts.
+- Three-layer architecture (Markdown + ChromaDB/Vector + NetworkX/Graph)
+- Significance classification
+- Automated maintenance
+- Full test suite
+- Clean `src/` layout with `pyproject.toml` packaging
 
-## Setup
+## Do not use this repo for new work. Use [agent-memory-core](https://github.com/JakebotLabs/agent-memory-core) instead.
 
-1.  **Install Dependencies** (if not already done):
-    ```bash
-    python3 -m venv venv
-    venv/bin/pip install -r ../requirements-memory.txt
-    ```
+---
 
-2.  **Index Memory**:
-    ```bash
-    venv/bin/python indexer.py
-    ```
-    *Run this whenever `MEMORY.md` changes significantly.*
+<details>
+<summary>Original description (for reference)</summary>
 
-3.  **Search**:
-    ```bash
-    venv/bin/python search.py "your query here"
-    ```
+Early prototype of the vector memory layer for the agent. Contains raw scripts for indexing, searching, and graph-building over `MEMORY.md` files using ChromaDB and sentence-transformers.
 
-## Architecture
-
-- **Embeddings**: `sentence-transformers/all-MiniLM-L6-v2` (384d).
-- **Storage**: ChromaDB (Local Persistent).
-- **Chunking**: Markdown Header-based split.
+This prototype was developed during February 2026 and informed the architecture of agent-memory-core.
+</details>
